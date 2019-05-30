@@ -12,15 +12,12 @@ namespace Exercise3
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-            routes.MapRoute(name: "yoniush", url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-                );
-
+            // which routes I can get in my website
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                // if you dont get enything go hear
+                defaults: new { controller = "First", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
