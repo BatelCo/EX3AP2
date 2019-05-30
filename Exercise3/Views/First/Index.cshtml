@@ -1,0 +1,18 @@
+﻿@{
+
+    ViewBag.Title = "display";
+
+}
+
+<body background="~/export-map-share.png" style="background-size:100% 100%; background-attachment:fixed">
+    <canvas id="can" style="border:1px;">
+        <script>
+            var can = document.getElementById("myCanvas")
+            var ctx = can.getContext("2d")
+            ctx.beginPath();
+            ctx.arc(x, y, pointSize, 0, Math.PI * 2, true); // Draw a point using the arc function of the canvas with a point structure.
+            ctx.fillStyle = "Red";
+            ctx.fill(); // Close the path and fill.
+        </script>
+    </canvas>
+</body>
