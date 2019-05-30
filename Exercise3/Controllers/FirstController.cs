@@ -19,6 +19,11 @@ namespace Exercise3.Controllers
         //public ActionResult IndexPost() {
 
         // }
-
+        [HttpGet]
+        public ActionResult yoniush(string segalush)
+        {
+            ModelBinderAttribute.
+            return View();
+        }
     }
 }
