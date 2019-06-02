@@ -24,6 +24,12 @@ namespace Exercise3
                 // if you dont get enything go hear
                 defaults: new { controller = "First", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "Four",
+                url: "display/{ip}/{port}/4",
+                defaults: new { controller = "First", action = "Four" }
+                );
         }
     }
 }
