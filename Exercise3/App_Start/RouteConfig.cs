@@ -17,7 +17,6 @@ namespace Exercise3
                 name: "Display",
                 url: "display/{ip}/{port}",
                 defaults: new { controller = "First", action = "Display" }
-
                 );
             routes.MapRoute(
                 name: "Default",

@@ -10,12 +10,18 @@
             var ctx = can.getContext("2d")
             ctx.beginPath();
             // get x cordinate location
-            var xLocation = @ViewBag.lon
-            var yLocation = @ViewBag.lat
+            var lonNormal = ( @ViewBag.lon + 180) * (window.innerWidth / 360);
+            var latNormal = (@ViewBag.lat + 90) * (window.innerHeight / 180);
+            console.log(@ViewBag.lon + "," + @ViewBag.lat);
+
+            var xLocation = lonNormal + 100
+            var yLocation = latNormal + 100
+
+            console.log(lonNormal + "," + latNormal);
 
             // get y cordinate location
 
-            ctx.arc(xLocation, yLocation, 100, 0, Math.PI * 2, true); // Draw a point using the arc function of the canvas with a point structure.
+            ctx.arc(xLocation, yLocation, 1000, 0, Math.PI * 2, true); // Draw a point using the arc function of the canvas with a point structure.
             ctx.fillStyle = "Red";
             ctx.fill(); // Close the path and fill.
 
