@@ -21,7 +21,6 @@ namespace Exercise3.Controllers
         // the matching view - Display2
         public ActionResult Display2(string ip, int port)
         {
-           
             InfoModel.Instance.close_client();
             InfoModel.Instance.connect_client(ip, port);
             ViewBag.lat = double.Parse(InfoModel.Instance.Read("get /position/latitude-deg\r\n"));
