@@ -24,8 +24,8 @@ namespace Exercise3.Controllers
            
             InfoModel.Instance.close_client();
             InfoModel.Instance.connect_client(ip, port);
-            ViewBag.lat = float.Parse(InfoModel.Instance.Read("get /position/latitude-deg\r\n"));
-            ViewBag.lon = float.Parse(InfoModel.Instance.Read("get /position/longitude-deg\r\n"));
+            ViewBag.lat = double.Parse(InfoModel.Instance.Read("get /position/latitude-deg\r\n"));
+            ViewBag.lon = double.Parse(InfoModel.Instance.Read("get /position/longitude-deg\r\n"));
             return View();
         }
     }
