@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
+
 namespace Exercise3.Models
 {
     public class InfoModel

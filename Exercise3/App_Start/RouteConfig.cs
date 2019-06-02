@@ -20,7 +20,6 @@ namespace Exercise3
             url: "display/flight1/4",
             defaults: new { controller = "Fourth", action = "Display4" }
          );
-
             // first route : display/127.0.0.1/5400
             routes.MapRoute(
             name: "Display",
@@ -39,8 +38,6 @@ namespace Exercise3
             url: "save/{ip}/{port}/4/10/flight1",
             defaults: new { controller = "Third", action = "Display3" }
           );
-
-
             // default
           routes.MapRoute(
                 name: "Default",
