@@ -17,6 +17,7 @@ namespace Exercise3.Controllers
             return View();
         }
 
+        // the matching view - Display
         public ActionResult Display(string ip, int port)
         {
             InfoModel.Instance.close_client();
@@ -31,8 +32,5 @@ namespace Exercise3.Controllers
 
         // }
        
-   
-
-
     }
 }

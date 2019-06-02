@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Display4";
+}
+
+<h2> Display4 : display/flight1/4 </h2>
+
+<body background="~/export-map-share.png" style="background-size:100% 100%; background-attachment:fixed">
+    <canvas id="myCanvas" style="border:1px;" size>
+
+        <script>
+                myCanvas.height = window.innerHeight;
+                myCanvas.width = window.innerWidth;
+                var can = document.getElementById("myCanvas")
+                var ctx = can.getContext("2d")
+                ctx.beginPath();
+
+                @*
+                // get x cordinate location
+                var lonNormal = ( @ViewBag.lon + 180) * (window.innerWidth / 360);
+                var latNormal = (@ViewBag.lat + 90) * (window.innerHeight / 180);
+                console.log(@ViewBag.lon + "," + @ViewBag.lat);
+
+                var xLocation = lonNormal
+                var yLocation = latNormal
+
+                console.log(xLocation + "," + yLocation);
+
+                // get y cordinate location
+
+                ctx.arc(xLocation, yLocation, 10, 0, Math.PI * 2, true); // Draw a point using the arc function of the canvas with a point structure.
+                ctx.stroke;
+                ctx.fillStyle = "Red";
+                ctx.fill(); // Close the path and fill.
+                *@
+        </script>
+    </canvas>
+</body>
