@@ -33,7 +33,6 @@ namespace Exercise3.Models
             location = new Location();
         }
 
-        // ?  public const string SCENARIO_FILE = "~/App_Data/{0}.txt";           // The Path of the Secnario
 
         public void ReadData(string name)
         {
@@ -42,32 +41,7 @@ namespace Exercise3.Models
             if (client.isConnected)
             {
                 string[] vals = client.Read();
-            }
-            
-      /*
-            string path = HttpContext.Current.Server.MapPath(String.Format(SCENARIO_FILE, name));
-            if (!File.Exists(path))
-            {
-                Employee.FirstName = name;
-                Employee.LastName = name;
- 
-
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(path, true))
-                {
-                    file.WriteLine(Employee.FirstName);
-                    file.WriteLine(Employee.LastName);
-                    file.WriteLine(Employee.Salary);
-                }
-            }
-            else
-            {
-                string[] lines = System.IO.File.ReadAllLines(path);        // reading all the lines of the file
-                Employee.FirstName = lines[0];
-                Employee.LastName = lines[1];
-                Employee.Salary = int.Parse(lines[2]);
-            }
-        */
-        
+            }     
 
         }
     }
