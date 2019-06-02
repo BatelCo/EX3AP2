@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 
@@ -13,12 +14,16 @@ namespace Exercise3.Controllers
         // return web page
         public ActionResult Index()
         {
-            ActionResult actionResult = display("127.0.0.1", 5400);
-            Location location = new Location();
-            ViewBag.lon = location.Xcordinate;
-            ViewBag.lat = location.Ycordinate;
-            return actionResult;
+            return View();
+        }
 
+        public ActionResult Display(string ip, int port)
+        {
+            InfoModel.Instance.close_client();
+            InfoModel.Instance.connect_client(ip, port);
+            ViewBag.lat = float.Parse(InfoModel.Instance.Read("get /position/latitude-deg\r\n"));
+            ViewBag.lon = float.Parse(InfoModel.Instance.Read("get /position/longitude-deg\r\n"));
+            return View();
         }
         // only with post call 
         //[HttpPost]
@@ -27,18 +32,7 @@ namespace Exercise3.Controllers
         // }
        
    
-        [HttpGet]
-        public ActionResult display(string ip, int port)
-        {
-            InfoModel.Instance.ip = ip;
-            InfoModel.Instance.port = port.ToString();
 
-
-            InfoModel.Instance.ReadData("Dor");
-
-
-            return View();
-        }
 
     }
 }
