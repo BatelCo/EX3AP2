@@ -21,6 +21,9 @@ namespace Exercise3.Controllers
             //        InfoModel.Instance.connect_client(ip, port);
             //        ViewBag.lat = float.Parse(InfoModel.Instance.Read("get /position/latitude-deg\r\n"));
             //        ViewBag.lon = float.Parse(InfoModel.Instance.Read("get /position/longitude-deg\r\n"));
+            //        ViewBag.throttle = float.Parse(InfoModel.Instance.Read("get /controls/engines/current-engine/throttle\r\n"));
+            //        ViewBag.rudder = float.Parse(InfoModel.Instance.Read("get /controls/flight/rudder\r\n"));
+           
             return View();
         }
 
