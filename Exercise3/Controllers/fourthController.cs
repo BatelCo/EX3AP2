@@ -30,15 +30,19 @@ namespace Exercise3.Controllers
             // Read the file and display it line by line.  
             string path = System.Web.HttpContext.Current.Server.MapPath(String.Format(SCENARIO_FILE, fileName));
             System.IO.StreamReader file = new System.IO.StreamReader(path);
-            // when we dont reach the end 
+            // when we dont reach the end
+            List<double[]> pairs = new List<double[]>();
+
             while ((line = file.ReadLine()) != null)
             {
                 // split the line
                 string[] arr = line.Split(';');
-                ViewBag.lat = arr[0];
-                ViewBag.lon = arr[1];
-
+                double[] pair = new double[2];
+                pair[0] = double.Parse(arr[0]);
+                pair[1] = double.Parse(arr[1]);
+                pairs.Add(pair);
             }
+            ViewBag.Pairs = pairs;
             file.Close();
         }
     }

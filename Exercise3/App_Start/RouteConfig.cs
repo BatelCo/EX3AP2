@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -17,8 +18,9 @@ namespace Exercise3
             // first route : display/127.0.0.1/5400
             routes.MapRoute(
             name: "Display",
-            url: "display/{ip}/{port}",
-            defaults: new { controller = "First", action = "Display" }
+            url: "display/{str}/{num}",
+            defaults: new { controller = "First", action = "Display" },
+            constraints: new {controller = new IsIP()}
          );
             // second route : display/127.0.0.1/5400/4 
             routes.MapRoute(
@@ -33,7 +35,7 @@ namespace Exercise3
             //, flight = UrlParameter.Optional
             defaults: new { controller = "Third", action = "Display3" }
          );
-            // fourth route : display/flight1/4   
+            //fourth route : display / flight1 / 4
             routes.MapRoute(
             name: "Display4",
             url: "display/{flight}/{freq}",
@@ -46,6 +48,28 @@ namespace Exercise3
                 // if you dont get enything go hear
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
          );
+        }
+
+        private class IsIP : IRouteConstraint
+        {
+            public IsIP()
+            {
+
+            }
+
+            public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
+            {
+                object f;
+                foreach (KeyValuePair<string, object> item in values)
+                {
+                    f = item.Value;
+                    if (Regex.IsMatch(f.ToString(), @"^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$"))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
         }
     }
 }

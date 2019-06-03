@@ -9,20 +9,19 @@
     <canvas id="myCanvas" style="border:1px;" size>
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
         <script>
-                 myCanvas.height = window.innerHeight;
+            myCanvas.height = window.innerHeight;
             myCanvas.width = window.innerWidth;
             var can = document.getElementById("myCanvas");
             var ctx = can.getContext("2d");
-            var initialLat = undefined;
-            var initialLon = undefined;
-
+            var initialLat = @ViewBag.Pairs[0][0];
+            var initialLon = @ViewBag.Pairs[0][1];
+            console.log(initialLat + "," + initialLon);
             // get x cordinate location
-            var lonNormal = ( @ViewBag.lon + 180) * (window.innerWidth / 360);
-            var latNormal = (@ViewBag.lat + 90) * (window.innerHeight / 180);
+            var lonNormal = (initialLat + 180) * (window.innerWidth / 360);
+            var latNormal = (initialLon + 90) * (window.innerHeight / 180);
             console.log(@ViewBag.lon + "," + @ViewBag.lat);
             var xLocation = lonNormal
             var yLocation = latNormal
-
 
             // get y cordinate location
 
@@ -42,31 +41,36 @@
                 ctx.lineWidth = 3;
                 ctx.stroke();
             }
-            // every 4 seconds
+            var counter = 1;
+            // every freq seconds
             var freq = @ViewBag.freq * 1000;
             // draw start point
 
-            setDrawing = (function () {
-                    $.post("@Url.Action("Display4", "Fourth")").done(function () {
+            setDrawing = (function (counter) {
+                $.post("@Url.Action("Display4", "Fourth")").done(function () {
+
+                    var temp = @ViewBag.Pairs;
+                    //xLocation = temp[counter][0];
+                    //yLocation = temp[counter][1];
+
+
                     xLocation += 50;
                     yLocation += 50;
+
                     if (initialLat != undefined && initialLon != undefined) {
-                            drawLine(initialLon, initialLat, xLocation, yLocation);
-                        } else {
-                            drawCoordinates();
-                        }
+                        drawLine(initialLon, initialLat, xLocation, yLocation);
+                    } else {
+                        drawCoordinates();
+                    }
                     console.log(xLocation + "," + yLocation);
                     initialLon = xLocation;
                     initialLat = yLocation;
+                    counter++;
                 })
             });
-            var interval = setInterval(setDrawing, freq);
-            function someFunc() {
-                clearInterval(interval);
-            }
-            // 1000 = one second
-            setTimeout(someFunc, 1000);
+            interval = setInterval(setDrawing, freq);
             setDrawing();
+
         </script>
     </canvas>
 </body>
