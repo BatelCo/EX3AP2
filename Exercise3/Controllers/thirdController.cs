@@ -23,11 +23,15 @@ namespace Exercise3.Controllers
             InfoModel.Instance.connect_client(ip, port);
             ViewBag.freq = freq;
             ViewBag.time = time;
-            ViewBag.lat = double.Parse(InfoModel.Instance.Read("get /position/latitude-deg\r\n"));
-            ViewBag.lon = double.Parse(InfoModel.Instance.Read("get /position/longitude-deg\r\n"));
-            ViewBag.throttle = double.Parse(InfoModel.Instance.Read("get /controls/engines/current-engine/throttle\r\n"));
-            ViewBag.rudder = double.Parse(InfoModel.Instance.Read("get /controls/flight/rudder\r\n"));
-            WriteToFile(ViewBag.lat, ViewBag.lon, ViewBag.throttle, ViewBag.rudder);
+            try
+            {
+                ViewBag.lat = double.Parse(InfoModel.Instance.Read("get /position/latitude-deg\r\n"));
+                ViewBag.lon = double.Parse(InfoModel.Instance.Read("get /position/longitude-deg\r\n"));
+                ViewBag.throttle = double.Parse(InfoModel.Instance.Read("get /controls/engines/current-engine/throttle\r\n"));
+                ViewBag.rudder = double.Parse(InfoModel.Instance.Read("get /controls/flight/rudder\r\n"));
+                WriteToFile(ViewBag.lat, ViewBag.lon, ViewBag.throttle, ViewBag.rudder);
+            }catch (Exception) { }
+
             return View();
         }
 
