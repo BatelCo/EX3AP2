@@ -17,7 +17,8 @@ namespace Exercise3.Controllers
         }
 
         // the matching view - Display3
-        public ActionResult Display3(string ip, int port, int freq, int time)
+        [HttpGet]
+        public ActionResult Display3(string ip, int port, int freq, int time, string flight)
         {
             InfoModel.Instance.close_client();
             InfoModel.Instance.connect_client(ip, port);
@@ -29,15 +30,16 @@ namespace Exercise3.Controllers
                 ViewBag.lon = double.Parse(InfoModel.Instance.Read("get /position/longitude-deg\r\n"));
                 ViewBag.throttle = double.Parse(InfoModel.Instance.Read("get /controls/engines/current-engine/throttle\r\n"));
                 ViewBag.rudder = double.Parse(InfoModel.Instance.Read("get /controls/flight/rudder\r\n"));
-                WriteToFile(ViewBag.lat, ViewBag.lon, ViewBag.throttle, ViewBag.rudder);
+                WriteToFile(ViewBag.lat, ViewBag.lon, ViewBag.throttle, ViewBag.rudder, flight);
             }catch (Exception) { }
 
             return View();
         }
 
-        public void WriteToFile(double lat, double lon, double throttle, double rudder)
+        public void WriteToFile(double lat, double lon, double throttle, double rudder, string fileName)
         {
-            using (StreamWriter writetext = new StreamWriter("C:/Users/yonis/Desktop/Computer Science/Coding2/Exercise3/Exercise3/App_Data/data.txt", true))
+            string path = "C:/Users/yonis/Desktop/Computer Science/Coding2/Exercise3/Exercise3/App_Data/" + fileName + ".txt";
+            using (StreamWriter writetext = new StreamWriter(path, true))
             {
                 writetext.WriteLine(lat + ";" + lon + ";" + throttle + ";" + rudder);
                 writetext.AutoFlush = true;

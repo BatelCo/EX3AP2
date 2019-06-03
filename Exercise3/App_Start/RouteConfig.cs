@@ -14,12 +14,6 @@ namespace Exercise3
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             // which routes I can get in my website
 
-            // fourth route : display/flight1/4   
-            routes.MapRoute(
-            name: "Display4",
-            url: "display/flight1/4",
-            defaults: new { controller = "Fourth", action = "Display4" }
-         );
             // first route : display/127.0.0.1/5400
             routes.MapRoute(
             name: "Display",
@@ -35,11 +29,18 @@ namespace Exercise3
             // third route : save/127.0.0.1/5400/4/10/flight1
             routes.MapRoute(
             name: "Display3",
-            url: "save/{ip}/{port}/{freq}/{time}/flight1",
+            url: "save/{ip}/{port}/{freq}/{time}/{flight}",
+            //, flight = UrlParameter.Optional
             defaults: new { controller = "Third", action = "Display3" }
          );
+            // fourth route : display/flight1/4   
+            routes.MapRoute(
+            name: "Display4",
+            url: "display/flight1/4",
+            defaults: new { controller = "Fourth", action = "Display4" }
+         );
             // default
-          routes.MapRoute(
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 // if you dont get enything go hear

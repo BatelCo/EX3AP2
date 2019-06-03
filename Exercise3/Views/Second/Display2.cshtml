@@ -38,6 +38,8 @@
                 ctx.beginPath();
                 ctx.moveTo(startX, startY);
                 ctx.lineTo(endX, endY);
+                ctx.strokeStyle = "red"
+                ctx.width = 3;
                 ctx.stroke();
             }
             // every 4 seconds
@@ -46,20 +48,15 @@
             
 
             setDrawing = (function () {
-
                     $.post("@Url.Action("Display2", "Second")").done(function () {
-
                     xLocation += 50;
                     yLocation += 50;
-                    
-                   
                         if (initialLat != undefined && initialLon != undefined) {
                             drawLine(initialLon, initialLat, xLocation, yLocation);
                         } else {
                             drawCoordinates();
                         }
                     console.log(xLocation + "," + yLocation);
-
                     initialLon = xLocation;
                     initialLat = yLocation;
                 })
