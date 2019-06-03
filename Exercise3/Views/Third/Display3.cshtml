@@ -1,10 +1,7 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Display3";
 }
-
 <h2> Display3 : /save/127.0.0.1/5400/4/10/flight1 </h2>
-
 <body background="~/export-map-share.png" style="background-size:100% 100%; background-attachment:fixed">
     <canvas id="myCanvas" style="border:1px;" size>
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
@@ -36,7 +33,7 @@
 
             function drawLine(startX, startY, endX, endY) {
                 ctx.beginPath();
-             
+
                 ctx.moveTo(startX, startY);
                 ctx.lineTo(endX, endY);
                 ctx.strokeStyle = "red";
@@ -47,7 +44,7 @@
             var freq = @ViewBag.freq * 1000;
             var time = @ViewBag.time * 1000;
             // draw start point
-            
+
             setDrawing = (function () {
 
                     $.post("@Url.Action("Display3", "Third")").done(function () {

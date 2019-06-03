@@ -17,7 +17,6 @@ namespace Exercise3.Controllers
         }
 
         // the matching view - Display3
-        [HttpGet]
         public ActionResult Display3(string ip, int port, int freq, int time, string flight)
         {
             InfoModel.Instance.close_client();
