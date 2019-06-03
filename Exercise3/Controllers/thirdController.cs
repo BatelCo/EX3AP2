@@ -10,6 +10,8 @@ namespace Exercise3.Controllers
 {
     public class ThirdController : Controller
     {
+        public const string SCENARIO_FILE = "~/App_Data/{0}.txt";
+
         // GET: third
         public ActionResult Index()
         {
@@ -37,7 +39,7 @@ namespace Exercise3.Controllers
 
         public void WriteToFile(double lat, double lon, double throttle, double rudder, string fileName)
         {
-            string path = "C:/Users/yonis/Desktop/Computer Science/Coding2/Exercise3/Exercise3/App_Data/" + fileName + ".txt";
+            string path = System.Web.HttpContext.Current.Server.MapPath(String.Format(SCENARIO_FILE, fileName));
             using (StreamWriter writetext = new StreamWriter(path, true))
             {
                 writetext.WriteLine(lat + ";" + lon + ";" + throttle + ";" + rudder);

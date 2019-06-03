@@ -23,7 +23,6 @@
             var xLocation = lonNormal
             var yLocation = latNormal
 
-
             // get y cordinate location
 
             function drawCoordinates() {
@@ -46,30 +45,22 @@
             // every 4 seconds
             var freq = @ViewBag.freq * 1000;
             // draw start point
-            
-
             setDrawing = (function () {
-
                     $.post("@Url.Action("Display2", "Second")").done(function () {
-
                     xLocation += 50;
-                    yLocation += 50;
-                    
-                   
+                    yLocation += 50;  
                         if (initialLat != undefined && initialLon != undefined) {
                             drawLine(initialLon, initialLat, xLocation, yLocation);
                         } else {
                             drawCoordinates();
                         }
                     console.log(xLocation + "," + yLocation);
-
                     initialLon = xLocation;
                     initialLat = yLocation;
                 })
             });
             setInterval(setDrawing, freq);
             setDrawing();
-
         </script>
     </canvas>
 </body>
