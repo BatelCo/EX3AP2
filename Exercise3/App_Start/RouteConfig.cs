@@ -25,26 +25,26 @@ namespace Exercise3
             name: "Display",
             url: "display/{ip}/{port}",
             defaults: new { controller = "First", action = "Display" }
-            );
+         );
             // second route : display/127.0.0.1/5400/4 
             routes.MapRoute(
             name: "Display2",
-            url: "display/{ip}/{port}/4",
+            url: "display/{ip}/{port}/{freq}",
             defaults: new { controller = "Second", action = "Display2"}
-           );
+         );
             // third route : save/127.0.0.1/5400/4/10/flight1
             routes.MapRoute(
             name: "Display3",
-            url: "save/{ip}/{port}/4/10/flight1",
+            url: "save/{ip}/{port}/{freq}/{time}/flight1",
             defaults: new { controller = "Third", action = "Display3" }
-          );
+         );
             // default
           routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 // if you dont get enything go hear
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+         );
         }
     }
 }

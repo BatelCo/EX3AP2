@@ -41,7 +41,7 @@
                 ctx.stroke();
             }
             // every 4 seconds
-            var time = 4 * 1000;
+            var freq = @ViewBag.freq * 1000;
             // draw start point
             
 
@@ -64,7 +64,7 @@
                     initialLat = yLocation;
                 })
             });
-            setInterval(setDrawing, time);
+            setInterval(setDrawing, freq);
             setDrawing();
 
         </script>
