@@ -36,15 +36,18 @@
 
             function drawLine(startX, startY, endX, endY) {
                 ctx.beginPath();
+             
                 ctx.moveTo(startX, startY);
                 ctx.lineTo(endX, endY);
+                ctx.strokeStyle = "red";
+                ctx.lineWidth = 3;
                 ctx.stroke();
             }
             // every 4 seconds
             var freq = @ViewBag.freq * 1000;
-            var time = @ViewBag.time;
+            var time = @ViewBag.time * 1000;
             // draw start point
-
+            
             setDrawing = (function () {
 
                     $.post("@Url.Action("Display3", "Third")").done(function () {
@@ -64,8 +67,11 @@
                     initialLat = yLocation;
                 })
             });
-            setInterval(setDrawing, freq);
-            setTimeout(setDrawing, time);
+            var interval = setInterval(setDrawing, freq);
+            function someFunc() {
+                clearInterval(interval);
+            }
+            setTimeout(someFunc, time);
             setDrawing();
 
         </script>

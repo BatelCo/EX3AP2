@@ -35,9 +35,12 @@
             }
 
             function drawLine(startX, startY, endX, endY) {
-                ctx.beginPath();
+                ctx.beginPath();         
                 ctx.moveTo(startX, startY);
                 ctx.lineTo(endX, endY);
+                // line in red color
+                ctx.strokeStyle = "red";
+                ctx.lineWidth = 3;
                 ctx.stroke();
             }
             // every 4 seconds
