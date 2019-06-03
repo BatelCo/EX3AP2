@@ -36,7 +36,7 @@ namespace Exercise3
             // fourth route : display/flight1/4   
             routes.MapRoute(
             name: "Display4",
-            url: "display/flight1/4",
+            url: "display/{flight}/{freq}",
             defaults: new { controller = "Fourth", action = "Display4" }
          );
             // default
