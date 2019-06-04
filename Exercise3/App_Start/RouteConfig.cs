@@ -44,9 +44,9 @@ namespace Exercise3
             // default
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
+                url: "",
                 // if you dont get enything go hear
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "view", id = UrlParameter.Optional }
          );
         }
 
