@@ -12,14 +12,11 @@
             var ctx = can.getContext("2d");
             var initialLat = undefined;
             var initialLon = undefined;
-
             // get x cordinate location
             var lonNormal = ( @ViewBag.lon + 180) * (window.innerWidth / 360);
             var latNormal = (@ViewBag.lat + 90) * (window.innerHeight / 180);
-            console.log(@ViewBag.lon + "," + @ViewBag.lat);
             var xLocation = lonNormal
             var yLocation = latNormal
-
 
             // get y cordinate location
 
@@ -53,7 +50,6 @@
                         } else {
                             drawCoordinates();
                         }
-                    console.log(xLocation + "," + yLocation);
                     initialLon = xLocation;
                     initialLat = yLocation;
                 })

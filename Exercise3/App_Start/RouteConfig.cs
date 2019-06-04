@@ -52,10 +52,7 @@ namespace Exercise3
 
         private class IsIP : IRouteConstraint
         {
-            public IsIP()
-            {
-
-            }
+            public IsIP() {}
 
             public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
             {
