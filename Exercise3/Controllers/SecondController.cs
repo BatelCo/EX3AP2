@@ -21,11 +21,15 @@ namespace Exercise3.Controllers
         // the matching view - Display2
         public ActionResult Display2(string ip, int port, int freq)
         {
-            InfoModel.Instance.close_client();
-            InfoModel.Instance.connect_client(ip, port);
-            ViewBag.freq = freq;
-            ViewBag.lat = double.Parse(InfoModel.Instance.Read("get /position/latitude-deg\r\n"));
-            ViewBag.lon = double.Parse(InfoModel.Instance.Read("get /position/longitude-deg\r\n"));
+            try
+            {
+                InfoModel.Instance.close_client();
+                InfoModel.Instance.connect_client(ip, port);
+                ViewBag.freq = freq;
+                ViewBag.lat = double.Parse(InfoModel.Instance.Read("get /position/latitude-deg\r\n"));
+                ViewBag.lon = double.Parse(InfoModel.Instance.Read("get /position/longitude-deg\r\n"));
+            }
+            catch (Exception) { }
             return View();
         }
     }

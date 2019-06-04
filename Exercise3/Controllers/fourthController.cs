@@ -10,6 +10,7 @@ namespace Exercise3.Controllers
 {
     public class FourthController : Controller
     {
+        public static int counter = 0;
         // GET: fourth
         public ActionResult Index()
         {
@@ -32,7 +33,6 @@ namespace Exercise3.Controllers
             System.IO.StreamReader file = new System.IO.StreamReader(path);
             // when we dont reach the end
             List<double[]> pairs = new List<double[]>();
-
             while ((line = file.ReadLine()) != null)
             {
                 // split the line
@@ -43,6 +43,11 @@ namespace Exercise3.Controllers
                 pairs.Add(pair);
             }
             ViewBag.Pairs = pairs;
+            if (counter < pairs.Count) {
+                ViewBag.Lat = pairs[counter][0];
+                ViewBag.Lon = pairs[counter][1];
+            }
+            counter++;
             file.Close();
         }
     }

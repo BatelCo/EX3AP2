@@ -33,7 +33,6 @@ namespace Exercise3.Controllers
                 ViewBag.rudder = double.Parse(InfoModel.Instance.Read("get /controls/flight/rudder\r\n"));
                 WriteToFile(ViewBag.lat, ViewBag.lon, ViewBag.throttle, ViewBag.rudder, flight);
             }catch (Exception) { }
-
             return View();
         }
 
