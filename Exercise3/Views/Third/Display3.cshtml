@@ -1,9 +1,11 @@
 ﻿@{
     ViewBag.Title = "Display3";
 }
+
 <h2> Display3 : /save/127.0.0.1/5400/4/10/flight1 </h2>
+
 <body background="~/export-map-share.png" style="background-size:100% 100%; background-attachment:fixed">
-    <canvas id="myCanvas" style="border:1px;" size>
+    <canvas id="myCanvas" style="border:1px;">
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
         <script>
             myCanvas.height = window.innerHeight;
@@ -13,13 +15,11 @@
             var initialLat = undefined;
             var initialLon = undefined;
             // get x cordinate location
-            var lonNormal = ( @ViewBag.lon + 180) * (window.innerWidth / 360);
+            var lonNormal = (@ViewBag.lon + 180) * (window.innerWidth / 360);
             var latNormal = (@ViewBag.lat + 90) * (window.innerHeight / 180);
             var xLocation = lonNormal
             var yLocation = latNormal
-
             // get y cordinate location
-
             function drawCoordinates() {
                 ctx.beginPath();
                 ctx.arc(xLocation, yLocation, 10, 0, Math.PI * 2, true); // Draw a point using the arc function of the canvas with a point structure.
@@ -27,7 +27,6 @@
                 ctx.fillStyle = "Red";
                 ctx.fill(); // Close the path and fill.
             }
-
             function drawLine(startX, startY, endX, endY) {
                 ctx.beginPath();
                 ctx.moveTo(startX, startY);
@@ -36,20 +35,19 @@
                 ctx.lineWidth = 3;
                 ctx.stroke();
             }
-            // every 4 seconds
+            // every freq seconds
             var freq = @ViewBag.freq * 1000;
             var time = @ViewBag.time * 1000;
             // draw start point
-
             setDrawing = (function () {
                     $.post("@Url.Action("Display3", "Third")").done(function () {
                     xLocation += 50;
                     yLocation += 50;
                     if (initialLat != undefined && initialLon != undefined) {
-                            drawLine(initialLon, initialLat, xLocation, yLocation);
-                        } else {
-                            drawCoordinates();
-                        }
+                        drawLine(initialLon, initialLat, xLocation, yLocation);
+                    } else {
+                        drawCoordinates();
+                    }
                     initialLon = xLocation;
                     initialLat = yLocation;
                 })
@@ -60,7 +58,6 @@
             }
             setTimeout(someFunc, time);
             setDrawing();
-
         </script>
     </canvas>
 </body>
