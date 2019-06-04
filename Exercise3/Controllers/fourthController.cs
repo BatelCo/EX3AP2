@@ -44,8 +44,8 @@ namespace Exercise3.Controllers
             }
             ViewBag.Pairs = pairs;
             if (counter < pairs.Count) {
-                ViewBag.Lat = pairs[counter][0];
-                ViewBag.Lon = pairs[counter][1];
+                ViewBag.lat = pairs[counter][0];
+                ViewBag.lon = pairs[counter][1];
             }
             counter++;
             file.Close();

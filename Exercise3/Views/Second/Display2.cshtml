@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Display2";
 }
 
@@ -15,15 +14,12 @@
             var ctx = can.getContext("2d");
             var initialLat = undefined;
             var initialLon = undefined;
-
             // get x cordinate location
             var lonNormal = (@ViewBag.lon + 180) * (window.innerWidth / 360);
             var latNormal = (@ViewBag.lat + 90) * (window.innerHeight / 180);
             var xLocation = lonNormal
             var yLocation = latNormal
-
             // get y cordinate location
-
             function drawCoordinates() {
                 ctx.beginPath();
                 ctx.arc(xLocation, yLocation, 10, 0, Math.PI * 2, true); // Draw a point using the arc function of the canvas with a point structure.
@@ -31,7 +27,6 @@
                 ctx.fillStyle = "Red";
                 ctx.fill(); // Close the path and fill.
             }
-
             function drawLine(startX, startY, endX, endY) {
                 ctx.beginPath();         
                 ctx.moveTo(startX, startY);
@@ -41,8 +36,9 @@
                 ctx.lineWidth = 3;
                 ctx.stroke();
             }
-            // every 4 seconds
+            // every freq seconds
             var freq = @ViewBag.freq * 1000;
+
             // draw start point
             setDrawing = (function () {
                     $.post("@Url.Action("Display2", "Second")").done(function () {
@@ -53,7 +49,6 @@
                     } else {
                         drawCoordinates();
                     }
-                    console.log(xLocation + "," + yLocation);
                     initialLon = xLocation;
                     initialLat = yLocation;
                 })

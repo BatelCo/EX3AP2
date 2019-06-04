@@ -21,14 +21,15 @@ namespace Exercise3.Controllers
         // the matching view - Display
         public ActionResult Display(string str, int num)
         {
+            try
+            {
                 InfoModel.Instance.close_client();
                 InfoModel.Instance.connect_client(str, num);
                 ViewBag.lat = double.Parse(InfoModel.Instance.Read("get /position/latitude-deg\r\n"));
                 ViewBag.lon = double.Parse(InfoModel.Instance.Read("get /position/longitude-deg\r\n"));
-                return View();
+            }
+            catch (Exception) { }
+            return View();
         }
     }
-    //                return RedirectToAction("Display4", new { str, num });
-    // if (Regex.IsMatch(str, @"^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$"))
-
 }
