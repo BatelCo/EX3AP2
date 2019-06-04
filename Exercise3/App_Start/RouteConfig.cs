@@ -43,10 +43,10 @@ namespace Exercise3
          );
             // default
             routes.MapRoute(
-                name: "Default",
-                url: "",
-                // if you dont get enything go hear
-                defaults: new { controller = "Home", action = "view", id = UrlParameter.Optional }
+            name: "Default",
+            url: "",
+            // if you dont get enything go hear
+            defaults: new { controller = "Home", action = "View1", id = UrlParameter.Optional }
          );
         }
 

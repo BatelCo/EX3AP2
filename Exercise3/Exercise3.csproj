@@ -129,7 +129,7 @@
     <Content Include="Views\Second\Display2.cshtml" />
     <Content Include="Views\Third\Display3.cshtml" />
     <Content Include="Views\Fourth\Display4.cshtml" />
-    <Content Include="Views\Home\View.cshtml" />
+    <Content Include="Views\Home\View1.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

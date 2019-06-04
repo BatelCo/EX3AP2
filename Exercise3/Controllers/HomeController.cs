@@ -14,9 +14,8 @@ namespace Exercise3.Controllers
             return View();
         }
 
-        public ActionResult view()
+        public ActionResult View1()
         {
-
             return View();
         }
     }

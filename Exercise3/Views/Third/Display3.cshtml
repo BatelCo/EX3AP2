@@ -41,8 +41,6 @@
             // draw start point
             setDrawing = (function () {
                     $.post("@Url.Action("Display3", "Third")").done(function () {
-                    xLocation += 50;
-                    yLocation += 50;
                     if (initialLat != undefined && initialLon != undefined) {
                         drawLine(initialLon, initialLat, xLocation, yLocation);
                     } else {
